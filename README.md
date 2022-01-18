@@ -9,7 +9,7 @@ This will also enable you to utilize these charts in an air gapped environment
 # Options for running the tool
 1. Run the script on a linux machine directly
 * This gives the most flexibility but requires a lot of pre reqs on your system which are mentioned bellow in the Script based execution section
-2. Utilize the Docker image ghcr.io/terasky-ltd/helm-airgaping-tool:0.1.0
+2. Utilize the Docker image ghcr.io/terasky-oss/helm-airgaping-tool:0.1.0
 * This allows for a very simple process to generate such a repo and can also be run on MAC (Windwos is also possible but requires some changes to the alias command)
 
 ## Running the container
@@ -30,12 +30,12 @@ mkdir output
 ```  
 4. Create an alias for running the container easily with all needed mounts
 ``` bash
-alias helm-to-pkg="docker run -i -v $HOME/.docker/config.json:/root/.docker/config.json -v $PWD/output:/output ghcr.io/terasky-ltd/helm-airgaping-tool:0.1.0"
+alias helm-to-pkg="docker run -i -v $HOME/.docker/config.json:/root/.docker/config.json -v $PWD/output:/output ghcr.io/terasky-oss/helm-airgaping-tool:0.1.0"
 ```  
 5. OPTIONAL - If you want to supply a list of charts to package instead of the entire repo create a file named chart-list.txt in the current directory and update the alias from step 4
 ``` bash
 touch chart-list.txt
-alias helm-to-pkg="docker run -i -v $HOME/.docker/config.json:/root/.docker/config.json -v $PWD/output:/output -v $PWD/chart-list.txt:/app/chart-list.txt ghcr.io/terasky-ltd/helm-airgaping-tool:0.1.0"
+alias helm-to-pkg="docker run -i -v $HOME/.docker/config.json:/root/.docker/config.json -v $PWD/output:/output -v $PWD/chart-list.txt:/app/chart-list.txt ghcr.io/terasky-oss/helm-airgaping-tool:0.1.0"
 ```
 * Now fill in the chart names in the format \<REPO NAME\>/\<CHART NAME\> one per line
 * When running the tool you must pass the flag "--chart-list-file-path" with the value "/app/chart-list.txt"
